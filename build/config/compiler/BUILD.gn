@@ -829,11 +829,11 @@ config("optimize") {
     # build also specifies /Os and /GF but these are implied by /O1.
     cflags = [ "/O1" ] + common_optimize_on_cflags + [ "/Oi" ]
   } else if (is_ios) {
-    # Favor speed over size per https://github.com/flutter/flutter/issues/4368  
-    cflags = [ "-O2" ] + common_optimize_on_cflags 
+    # Favor size over speed
+    cflags = [ "-Os" ] + common_optimize_on_cflags 
   } else if (is_android) {
-    # Favor speed over size per https://github.com/flutter/flutter/issues/4368
-    cflags = [ "-O2" ] + common_optimize_on_cflags  
+    # Favor size over speed 
+    cflags = [ "-Oz" ] + common_optimize_on_cflags  
     # TODO(goderbauer): re-enable when  https://github.com/flutter/flutter/issues/21686 is fixed
     # if (enable_lto) {
     #   lto_flags += [ "-flto" ]
